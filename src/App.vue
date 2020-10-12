@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <ul>
-      <li
-      v-for="todo in todos">
-        <span>{{ todo.name }}</span>
-        <span>{{ todo.priority }}</span>
+      <li v-for="(todo, index) in todos" v-bind:class="todo.newPriority ? 'high' : 
+      'low'" 
+      :key="index">
+        <span>{{ todo.name }} {{ todo.priority }}</span>
       </li>
     </ul>
 
@@ -55,5 +55,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+body>div>ul>li>span{
+  margin: 5px;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+li.high {
+  border: 2px solid #f2360c;
+}
+
+li.low {
+  border: 2px solid #1a681e;
+  color: #1a681e;
 }
 </style>
